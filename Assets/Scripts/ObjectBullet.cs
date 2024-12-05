@@ -11,7 +11,6 @@ public class ObjectBullet
     private static GameObject objectBullet;
     public float originalPositionX;
     public float originalPositionY;
-    private string originCanon;
 
     public void CreateBullet(GameObject BulletPrefab, GameObject CanonHead, float forceBullet, string nameCanon)
 {
@@ -33,7 +32,6 @@ public class ObjectBullet
         objectBullet.transform.position = CanonHead.transform.position;
         objectBullet.GetComponent<Rigidbody2D>().AddForce(CanonHead.transform.right * forceBullet);
         objectBullet.transform.SetParent(GameObject.Find(nameCanon).transform);
-        originCanon = nameCanon;
     }
     else
     {

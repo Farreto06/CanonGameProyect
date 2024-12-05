@@ -21,6 +21,8 @@ public class CanonController: MonoBehaviour
     private Canon canonScriptP2;
     [Header("Canon turn")]
     public string turnCanon="CanonDaniela";
+    [Header("Camera Settings")]
+    public float n=0.5f;
     #endregion
 
 
@@ -33,7 +35,7 @@ public class CanonController: MonoBehaviour
 
     void Update()
     {
-
+        putCameraOnCanon(Camera.main);
     }
     private void FindCanonP1(){
         CanonP1 = GameObject.FindWithTag(tagCanonP1);
@@ -79,6 +81,14 @@ public class CanonController: MonoBehaviour
             turnCanon = "CanonVicente";
         }else{
             turnCanon = "CanonDaniela";
+        }
+    }
+
+    public void putCameraOnCanon(Camera GameCamera){
+        if (turnCanon == "CanonDaniela"){
+            GameCamera.transform.position =  Vector3.Lerp(GameCamera.transform.position,new Vector3(CanonP1.transform.position.x,GameCamera.transform.position.y, GameCamera.transform.position.z),n);
+        }else{
+            GameCamera.transform.position = Vector3.Lerp(GameCamera.transform.position,new Vector3(CanonP2.transform.position.x,GameCamera.transform.position.y, GameCamera.transform.position.z),n);
         }
     }
 }
