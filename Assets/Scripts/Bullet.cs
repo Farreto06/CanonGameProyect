@@ -4,17 +4,19 @@ using UnityEngine;
 using pooBullet;
 using CanonScript;
 
+
 public class Bullet : MonoBehaviour
 {
     public float liveTime = 3;
     private Canon canonScript; // Referencia al script Canon
+    public string nameOriginCanon="CanonDaniela";
 
 
     // Start is called before the first frame update
     void Start()
     {
         // Encuentra el script Canon en la escena
-        canonScript = FindObjectOfType<Canon>();
+        canonScript = GameObject.FindWithTag(nameOriginCanon).GetComponent<Canon>();
 
         if (canonScript == null)
         {
@@ -22,7 +24,7 @@ public class Bullet : MonoBehaviour
         }
     }
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         liveTime -= Time.deltaTime;
 
@@ -32,7 +34,13 @@ public class Bullet : MonoBehaviour
             if (canonScript != null && canonScript.objectBullet != null)
             {
                 //Debug.Log("Manipulando objectBullet desde Bullet.cs");
+                Debug.Log("Destruyendo bala");
                 canonScript.objectBullet.DestroyBullet(gameObject); // Reemplaza con el método que necesites llamar
+                canonScript.callControllerTuenChange(); // Cambia el cañón activo
+                canonScript.changeCanon(); // Cambia el cañón activo
+                //Change name of origin canon
+                nameOriginCanon = "CanonVicente";
+
             }
         }
 

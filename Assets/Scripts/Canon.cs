@@ -74,13 +74,41 @@ public class Canon : MonoBehaviour
             OnDrawPath();
 
         }
-        if (Input.GetKeyDown(KeyCode.Space)){
-            objectBullet.CreateBullet(BulletPrefab, CanonHead, forceBullet,nameCanon);
-            canonController.changeCanon(nameCanon);
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            objectBullet.CreateBullet(BulletPrefab, CanonHead, forceBullet, nameCanon);
+            if (nameCanon == "CanonDaniela")
+            {
+                canonController.turnOffCanonDaniela();
+                Debug.Log("called turnOffCanonDaniela");
+            }
+            else if (nameCanon == "CanonVicente")
+            {
+                canonController.turnOffCanonVicente();
+            }
         }
+
         objectBullet.verifyBullet();
         objectBullet.CameraFollowBullet(GameCamera);
         }
+    }
+
+    public void changeCanon()
+    {
+        if (canonController.turnCanon == "CanonVicente")
+        {
+            canonController.turnOnCanonVicente();
+            Debug.Log("called turnOnCanonVicente of "+nameCanon);
+        }
+        else if (canonController.turnCanon == "CanonDaniela")
+        {
+            Debug.Log("called turnOnCanonDaniela of "+nameCanon);
+            canonController.turnOnCanonDaniela();
+        }
+    }
+    public void callControllerTuenChange()
+    {
+        canonController.changeTurnCanon();
     }
 }
 }

@@ -19,6 +19,8 @@ public class CanonController: MonoBehaviour
     [Header("------------------")]
     private Canon canonScriptP1;
     private Canon canonScriptP2;
+    [Header("Canon turn")]
+    public string turnCanon="CanonDaniela";
     #endregion
 
 
@@ -57,6 +59,26 @@ public class CanonController: MonoBehaviour
             canonScriptP1.active = true;
             canonScriptP2.active = false;
             Debug.Log("Activate Canon1");
+        }
+    }
+    public void turnOffCanonVicente(){
+        canonScriptP2.active = false;
+    }
+    public void turnOffCanonDaniela(){
+        canonScriptP1.active = false;
+    }
+
+    public void turnOnCanonVicente(){
+        canonScriptP2.active = true;
+    }
+    public void turnOnCanonDaniela(){
+        canonScriptP1.active = true;
+    }
+    public void changeTurnCanon(){
+        if (turnCanon == "CanonDaniela"){
+            turnCanon = "CanonVicente";
+        }else{
+            turnCanon = "CanonDaniela";
         }
     }
 }
