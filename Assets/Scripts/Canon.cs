@@ -22,6 +22,7 @@ public class Canon : MonoBehaviour
     public string nameCanon;
     [SerializeField] private GameObject EmtycanonController;
     private CanonController canonController;
+    private float angle=0f;
     
     // Start is called before the first frame update
     void Start()
@@ -55,12 +56,12 @@ public class Canon : MonoBehaviour
         Vector2 mousePosition = Input.mousePosition;
         Vector3 globalPosicion = GameCamera.ScreenToWorldPoint(new Vector3(mousePosition.x,mousePosition.y,transform.position.z-GameCamera.transform.position.z));
         
-        if (Input.GetMouseButton(0)){
+        if (Input.GetMouseButton(0) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow)){
+            if(Input.GetMouseButton(0)){
             CanonHead.transform.localEulerAngles = new Vector3(CanonHead.transform.localEulerAngles.x, CanonHead.transform.localEulerAngles.y, Mathf.Atan2((globalPosicion.y - CanonHead.transform.position.y), (globalPosicion.x - CanonHead.transform.position.x))*Mathf.Rad2Deg);
-
             // Draw line
-            float angle=Mathf.Atan2((globalPosicion.y - CanonHead.transform.position.y), (globalPosicion.x - CanonHead.transform.position.x))*Mathf.Rad2Deg;
-
+            angle=Mathf.Atan2((globalPosicion.y - CanonHead.transform.position.y), (globalPosicion.x - CanonHead.transform.position.x))*Mathf.Rad2Deg;
+            }
             float Vox = Mathf.Cos(Mathf.Deg2Rad*angle) * forceBullet/mass;
             float Voy = Mathf.Sin(Mathf.Deg2Rad*angle) * forceBullet/mass;
             points.Clear();
@@ -87,6 +88,12 @@ public class Canon : MonoBehaviour
                 canonController.turnOffCanonVicente();
             }
         }
+        if(Input.GetKey(KeyCode.UpArrow)){
+            incrementForce();
+        }
+        if(Input.GetKey(KeyCode.DownArrow)){
+            decrementForce();
+        }
         }
     }
 
@@ -106,6 +113,18 @@ public class Canon : MonoBehaviour
     public void callControllerTuenChange()
     {
         canonController.changeTurnCanon();
+    }
+    private void incrementForce()
+    {
+        if(forceBullet<=1400){
+            forceBullet += 10;
+        }
+    }
+    private void decrementForce()
+    {
+        if(forceBullet>=500){
+        forceBullet -= 10;
+        }
     }
 }
 }
