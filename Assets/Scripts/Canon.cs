@@ -126,5 +126,15 @@ public class Canon : MonoBehaviour
         forceBullet -= 10;
         }
     }
+    public void CanonAngleCero(){
+        if (nameCanon == "CanonDaniela")
+        {
+            CanonHead.transform.localEulerAngles = new Vector3(CanonHead.transform.localEulerAngles.x, CanonHead.transform.localEulerAngles.y, 0);
+        }
+        else
+        {
+            CanonHead.transform.localEulerAngles = new Vector3(CanonHead.transform.localEulerAngles.x, CanonHead.transform.localEulerAngles.y, 180);
+        }
+    }
 }
 }

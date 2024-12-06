@@ -1,8 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
-using CanonScript;
-using Controller;
 
 namespace pooBullet{
 public class ObjectBullet
@@ -40,11 +39,14 @@ public class ObjectBullet
 }
 
 
-    public void DestroyBullet(GameObject bullet)
+    public void DestroyBullet(GameObject bullet,GameObject explosion)
 {
     if (objectBullet != null)
     {
-        GameObject.Destroy(bullet);
+        bullet.GetComponent<SpriteRenderer>().enabled = false;
+        explosion.SetActive(true);
+        GameObject.Destroy(bullet,0.15f);
+        bullet.GetComponent<Bullet>().desacyivateInShot();
         isBullet = false;
         }
     }

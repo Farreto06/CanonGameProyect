@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using CanonScript;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -58,18 +59,6 @@ public class CanonController: MonoBehaviour
     private void setDefaultCanon(){
         canonScriptP1.active = true;
         canonScriptP2.active = false;
-    }
-    public void changeCanon(string origin){
-        Debug.Log("Change Canon of "+origin);
-        if (canonScriptP1.active){
-            canonScriptP1.active = false;
-            canonScriptP2.active = true;
-            Debug.Log("Activate Canon2");
-        }else{
-            canonScriptP1.active = true;
-            canonScriptP2.active = false;
-            Debug.Log("Activate Canon1");
-        }
     }
     public void turnOffCanonVicente(){
         canonScriptP2.active = false;
