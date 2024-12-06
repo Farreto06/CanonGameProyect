@@ -87,9 +87,6 @@ public class Canon : MonoBehaviour
                 canonController.turnOffCanonVicente();
             }
         }
-
-        objectBullet.verifyBullet();
-        objectBullet.CameraFollowBullet(GameCamera);
         }
     }
 

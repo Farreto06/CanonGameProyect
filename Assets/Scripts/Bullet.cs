@@ -1,14 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using pooBullet;
 using CanonScript;
-
+using Controller;
 
 public class Bullet : MonoBehaviour
 {
     public float liveTime = 3;
     private Canon canonScript; // Referencia al script Canon
+    [SerializeField] private GameObject EmtycanonController;
+    private CanonController canonController;
     public string nameOriginCanon="CanonDaniela";
 
 
@@ -17,6 +18,10 @@ public class Bullet : MonoBehaviour
     {
         // Encuentra el script Canon en la escena
         canonScript = GameObject.FindWithTag(nameOriginCanon).GetComponent<Canon>();
+        // Encuentra el script CanonController en la escena
+        FindCanonController();
+        canonController.setInShot(true);
+        canonController.setBullet(gameObject);
 
         if (canonScript == null)
         {
@@ -36,6 +41,8 @@ public class Bullet : MonoBehaviour
                 //Debug.Log("Manipulando objectBullet desde Bullet.cs");
                 Debug.Log("Destruyendo bala");
                 canonScript.objectBullet.DestroyBullet(gameObject); // Reemplaza con el método que necesites llamar
+                canonController.setInShot(false);
+                canonController.setBullet(null);
                 canonScript.callControllerTuenChange(); // Cambia el cañón activo
                 canonScript.changeCanon(); // Cambia el cañón activo
                 //Change name of origin canon
@@ -44,5 +51,9 @@ public class Bullet : MonoBehaviour
             }
         }
 
+    }
+    private void FindCanonController(){
+        EmtycanonController = GameObject.Find("Controller");
+        canonController = EmtycanonController.GetComponent<CanonController>();
     }
 }

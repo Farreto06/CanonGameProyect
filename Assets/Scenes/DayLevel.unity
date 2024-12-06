@@ -208,7 +208,7 @@ Transform:
   m_GameObject: {fileID: 101797081}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.18, z: -10}
+  m_LocalPosition: {x: -3.38, y: 4.18, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6140,6 +6140,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 776290473588632391, guid: 4bbd71181fefa15498bc119a0e7fdcd0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.19999993
+      objectReference: {fileID: 0}
+    - target: {fileID: 839477827634772171, guid: 4bbd71181fefa15498bc119a0e7fdcd0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.049999952
+      objectReference: {fileID: 0}
+    - target: {fileID: 942613660078405781, guid: 4bbd71181fefa15498bc119a0e7fdcd0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 942613660078405781, guid: 4bbd71181fefa15498bc119a0e7fdcd0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.16
+      objectReference: {fileID: 0}
     - target: {fileID: 3725215363660267622, guid: 4bbd71181fefa15498bc119a0e7fdcd0, type: 3}
       propertyPath: nameCanon
       value: CanonDaniela
@@ -6160,6 +6176,14 @@ PrefabInstance:
       propertyPath: EmtycanonController
       value: 
       objectReference: {fileID: 2100368136}
+    - target: {fileID: 4430943985843082494, guid: 4bbd71181fefa15498bc119a0e7fdcd0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4430943985843082494, guid: 4bbd71181fefa15498bc119a0e7fdcd0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 5134028137486912248, guid: 4bbd71181fefa15498bc119a0e7fdcd0, type: 3}
       propertyPath: m_Name
       value: CanonDaniela
@@ -6168,13 +6192,17 @@ PrefabInstance:
       propertyPath: m_TagString
       value: CanonDaniela
       objectReference: {fileID: 0}
+    - target: {fileID: 7344986021371775571, guid: 4bbd71181fefa15498bc119a0e7fdcd0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.3399998
+      objectReference: {fileID: 0}
     - target: {fileID: 7642095649926469967, guid: 4bbd71181fefa15498bc119a0e7fdcd0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.5141163
+      value: -3.38
       objectReference: {fileID: 0}
     - target: {fileID: 7642095649926469967, guid: 4bbd71181fefa15498bc119a0e7fdcd0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.0102648735
+      value: -0.29
       objectReference: {fileID: 0}
     - target: {fileID: 7642095649926469967, guid: 4bbd71181fefa15498bc119a0e7fdcd0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6207,6 +6235,18 @@ PrefabInstance:
     - target: {fileID: 7642095649926469967, guid: 4bbd71181fefa15498bc119a0e7fdcd0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8365811111682557113, guid: 4bbd71181fefa15498bc119a0e7fdcd0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.010000005
+      objectReference: {fileID: 0}
+    - target: {fileID: 8365811111682557113, guid: 4bbd71181fefa15498bc119a0e7fdcd0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.10000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 8961386028227481890, guid: 4bbd71181fefa15498bc119a0e7fdcd0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6295,7 +6335,7 @@ MonoBehaviour:
   CanonP2: {fileID: 0}
   tagCanonP2: CanonVicente
   turnCanon: CanonDaniela
-  n: 0.8
+  n: 0.3
 --- !u!4 &2100368138
 Transform:
   m_ObjectHideFlags: 0

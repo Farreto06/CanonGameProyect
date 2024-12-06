@@ -53,15 +53,5 @@ public class ObjectBullet
             isBullet = false;
         }
     }
-    public void CameraFollowBullet(Camera GameCamera){
-
-        if (objectBullet != null){
-            if (objectBullet.transform.position.x > 0){
-                GameCamera.transform.position = new Vector3(objectBullet.transform.position.x,GameCamera.transform.position.y, GameCamera.transform.position.z);
-            }
-        }else{
-            GameCamera.transform.position = Vector3.Lerp(GameCamera.transform.position, new Vector3(originalPositionX,originalPositionY,GameCamera.transform.position.z), 0.1f);  
-        }
-    }
 }
 }

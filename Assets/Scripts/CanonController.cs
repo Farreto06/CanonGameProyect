@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using CanonScript;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 namespace Controller
 {
@@ -21,6 +22,8 @@ public class CanonController: MonoBehaviour
     private Canon canonScriptP2;
     [Header("Canon turn")]
     public string turnCanon="CanonDaniela";
+    private bool inShot=false;
+    private GameObject objectBullet;
     [Header("Camera Settings")]
     public float n=0.5f;
     #endregion
@@ -33,9 +36,14 @@ public class CanonController: MonoBehaviour
         setDefaultCanon();
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        putCameraOnCanon(Camera.main);
+        if (!inShot){
+            putCameraOnCanon(Camera.main);
+        }else{
+            CameraFollowBullet(Camera.main);
+        }
+        
     }
     private void FindCanonP1(){
         CanonP1 = GameObject.FindWithTag(tagCanonP1);
@@ -86,9 +94,20 @@ public class CanonController: MonoBehaviour
 
     public void putCameraOnCanon(Camera GameCamera){
         if (turnCanon == "CanonDaniela"){
-            GameCamera.transform.position =  Vector3.Lerp(GameCamera.transform.position,new Vector3(CanonP1.transform.position.x,GameCamera.transform.position.y, GameCamera.transform.position.z),n);
+            GameCamera.transform.position = Vector3.Lerp(GameCamera.transform.position,new Vector3(CanonP1.transform.position.x,GameCamera.transform.position.y, GameCamera.transform.position.z),n);
         }else{
             GameCamera.transform.position = Vector3.Lerp(GameCamera.transform.position,new Vector3(CanonP2.transform.position.x,GameCamera.transform.position.y, GameCamera.transform.position.z),n);
+        }
+    }
+    public void setInShot(bool value){
+        inShot = value;
+    }
+    public void setBullet(GameObject bullet){
+        objectBullet = bullet;
+    }
+    public void CameraFollowBullet(Camera GameCamera){
+        if (objectBullet != null){    
+            GameCamera.transform.position = new Vector3(objectBullet.transform.position.x,GameCamera.transform.position.y, GameCamera.transform.position.z);
         }
     }
 }
