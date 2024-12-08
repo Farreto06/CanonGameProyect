@@ -23,6 +23,7 @@ public class Canon : MonoBehaviour
     [SerializeField] private GameObject EmtycanonController;
     private CanonController canonController;
     private float angle=0f;
+    public int hp=3;
     
     // Start is called before the first frame update
     void Start()
@@ -134,6 +135,13 @@ public class Canon : MonoBehaviour
         else
         {
             CanonHead.transform.localEulerAngles = new Vector3(CanonHead.transform.localEulerAngles.x, CanonHead.transform.localEulerAngles.y, 180);
+        }
+    }
+    public void decrementHp(){
+        hp--;
+        if (hp<=0){
+            //Añadir destruucción de cañón
+            Debug.Log("Canon "+nameCanon+" destruido");
         }
     }
 }

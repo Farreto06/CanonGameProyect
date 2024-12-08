@@ -99,5 +99,12 @@ public class CanonController: MonoBehaviour
             GameCamera.transform.position = new Vector3(objectBullet.transform.position.x,GameCamera.transform.position.y, GameCamera.transform.position.z);
         }
     }
+    public void decrementHpofController(){
+        if (turnCanon == "CanonDaniela"){
+            canonScriptP1.decrementHp();
+        }else{
+            canonScriptP2.decrementHp();
+        }
+    }
 }
 }

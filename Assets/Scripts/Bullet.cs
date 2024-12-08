@@ -62,13 +62,14 @@ public class Bullet : MonoBehaviour
             localDeleteBullet();
             Debug.Log("Colision con "+other.gameObject.name);
             //Add destroy animation
-            //Add decrement life
+            canonController.decrementHpofController();
         }
         else if (other.gameObject.layer == canonDanielaLayer){
             localDeleteBullet();
             Debug.Log("Colision con "+other.gameObject.name);
             //Add destroy animation
-            //Add decrement life
+            canonController.decrementHpofController();
+            
         }
         if (other.gameObject.layer == Floor){
             localDeleteBullet();
