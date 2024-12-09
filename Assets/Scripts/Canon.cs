@@ -24,6 +24,7 @@ public class Canon : MonoBehaviour
     private CanonController canonController;
     private float angle=0f;
     public int hp=3;
+    private AudioSource audioSource;
     
     // Start is called before the first frame update
     void Start()
@@ -31,6 +32,7 @@ public class Canon : MonoBehaviour
         objectBullet.originalPositionX = GameCamera.transform.position.x;
         objectBullet.originalPositionY = GameCamera.transform.position.y;
         canonController = EmtycanonController.GetComponent<CanonController>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -81,6 +83,7 @@ public class Canon : MonoBehaviour
             {
                 canonController.turnOffCanonVicente();
             }
+            audioSource.Play();
         }
         if(Input.GetKey(KeyCode.UpArrow)){
             incrementForce();

@@ -18,6 +18,7 @@ public class Bullet : MonoBehaviour
     private int Floor;
     public GameObject explosion;
     private bool verif=true;
+    private AudioSource audioSource;
 
 
     // Start is called before the first frame update
@@ -30,6 +31,8 @@ public class Bullet : MonoBehaviour
         FindCanonController();
         canonController.setInShot(true);
         canonController.setBullet(gameObject);
+
+        audioSource = GetComponent<AudioSource>();
 
         canonVicenteLayer = LayerMask.NameToLayer("CanonVicente");
         canonDanielaLayer = LayerMask.NameToLayer("CanonDaniela");
@@ -62,7 +65,9 @@ public class Bullet : MonoBehaviour
         canonController = EmtycanonController.GetComponent<CanonController>();
     }
     private void OnTriggerEnter2D(Collider2D other) {
+        
         if (other.gameObject.layer == canonVicenteLayer && verif){
+            audioSource.Play();
             localDeleteBullet();
             Debug.Log("Colision con "+other.gameObject.name);
             canonScript.UnDrawPath();
@@ -74,6 +79,7 @@ public class Bullet : MonoBehaviour
             verif=false;
         }
         else if (other.gameObject.layer == canonDanielaLayer && verif){
+            audioSource.Play();
             localDeleteBullet();
             Debug.Log("Colision con "+other.gameObject.name);
             canonScript.UnDrawPath();
@@ -85,6 +91,7 @@ public class Bullet : MonoBehaviour
             verif=false;
         }
         else if (other.gameObject.layer == Floor && verif){
+            audioSource.Play();
             localDeleteBullet();
             Debug.Log("Colision con "+other.gameObject.name);
             canonScript.UnDrawPath();
@@ -104,6 +111,7 @@ public class Bullet : MonoBehaviour
         canonScript.changeCanon(); // Cambia el cañón activo
         //Change name of origin canon
         nameOriginCanon = "CanonVicente";
+        
     }
     public void desacyivateInShot(){
         canonController.setInShot(false);

@@ -44,19 +44,24 @@ public class CanonController: MonoBehaviour
     [SerializeField] private GameObject winP1;
     [SerializeField] private GameObject winP2;
     [SerializeField] private GameObject menu;
+    private AudioSource audioSource;
     public void winPlayer1(){
         Debug.Log("Player 1 wins");
         winP1.SetActive(true);
+        turnCanon = "CanonDaniela";
         canonScriptP1.active = false;
         canonScriptP2.active = false;
         menu.SetActive(true);
+        audioSource.Play();
     }
     public void winPlayer2(){
         Debug.Log("Player 2 wins");
         winP2.SetActive(true);
+        turnCanon = "CanonVicente";
         canonScriptP1.active = false;
         canonScriptP2.active = false;
         menu.SetActive(true);
+        audioSource.Play();
     }
     #endregion
 
@@ -65,6 +70,7 @@ public class CanonController: MonoBehaviour
         FindCanonP1();
         FindCanonP2();
         setDefaultCanon();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void FixedUpdate()
