@@ -37,13 +37,6 @@ public class Canon : MonoBehaviour
     void Update()
     {
         if(active){
-        void UnDrawPath(){
-            foreach (GameObject point in grafictsPoints){
-                Destroy(point);
-            }
-            grafictsPoints.Clear();
-        }
-
         void OnDrawPath(){
             UnDrawPath();
             foreach (Vector3 point in points){
@@ -144,5 +137,11 @@ public class Canon : MonoBehaviour
             Debug.Log("Canon "+nameCanon+" destruido");
         }
     }
+    public void UnDrawPath(){
+            foreach (GameObject point in grafictsPoints){
+                Destroy(point);
+            }
+            grafictsPoints.Clear();
+        }
 }
 }

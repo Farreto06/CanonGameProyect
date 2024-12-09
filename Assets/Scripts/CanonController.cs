@@ -27,8 +27,38 @@ public class CanonController: MonoBehaviour
     private GameObject objectBullet;
     [Header("Camera Settings")]
     public float n=0.5f;
-    #endregion
+    [Header("------------------")]
+    [Header("Healt points Settings")]
+    [Header("Player_1")]
+    [SerializeField] private GameObject H1_P1;
+    [SerializeField] private GameObject H2_P1;
+    [SerializeField] private GameObject H3_P1;
+    [Header("Player_2")]
+    [SerializeField] private GameObject H1_P2;
+    [SerializeField] private GameObject H2_P2;
+    [SerializeField] private GameObject H3_P2;
 
+    #endregion
+    #region Wins and loses
+    [Header("Wins and loses")]
+    [SerializeField] private GameObject winP1;
+    [SerializeField] private GameObject winP2;
+    [SerializeField] private GameObject menu;
+    public void winPlayer1(){
+        Debug.Log("Player 1 wins");
+        winP1.SetActive(true);
+        canonScriptP1.active = false;
+        canonScriptP2.active = false;
+        menu.SetActive(true);
+    }
+    public void winPlayer2(){
+        Debug.Log("Player 2 wins");
+        winP2.SetActive(true);
+        canonScriptP1.active = false;
+        canonScriptP2.active = false;
+        menu.SetActive(true);
+    }
+    #endregion
 
     void Start()
     {
@@ -102,8 +132,24 @@ public class CanonController: MonoBehaviour
     public void decrementHpofController(){
         if (turnCanon == "CanonDaniela"){
             canonScriptP1.decrementHp();
+            if (canonScriptP1.hp == 2){
+                H3_P1.GetComponent<SpriteRenderer>().enabled = false;
+            }else if (canonScriptP1.hp == 1){
+                H2_P1.GetComponent<SpriteRenderer>().enabled = false;
+            }else if (canonScriptP1.hp == 0){
+                H1_P1.GetComponent<SpriteRenderer>().enabled = false;
+                winPlayer2();
+            }
         }else{
             canonScriptP2.decrementHp();
+            if (canonScriptP2.hp == 2){
+                H1_P2.GetComponent<SpriteRenderer>().enabled = false;
+            }else if (canonScriptP2.hp == 1){
+                H2_P2.GetComponent<SpriteRenderer>().enabled = false;
+            }else if (canonScriptP2.hp == 0){
+                H3_P2.GetComponent<SpriteRenderer>().enabled = false;
+                winPlayer1();
+            }
         }
     }
 }

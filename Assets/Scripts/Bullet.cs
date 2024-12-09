@@ -9,12 +9,15 @@ public class Bullet : MonoBehaviour
     public float liveTime = 3;
     private Canon canonScript; // Referencia al script Canon
     [SerializeField] private GameObject EmtycanonController;
+    private Canon canonVicente;
     private CanonController canonController;
     public string nameOriginCanon="CanonDaniela";
+    public string nameOriginCanonVicente="CanonVicente";
     private int canonVicenteLayer;
     private int canonDanielaLayer;
     private int Floor;
     public GameObject explosion;
+    private bool verif=true;
 
 
     // Start is called before the first frame update
@@ -22,6 +25,7 @@ public class Bullet : MonoBehaviour
     {
         // Encuentra el script Canon en la escena
         canonScript = GameObject.FindWithTag(nameOriginCanon).GetComponent<Canon>();
+        canonVicente = GameObject.FindWithTag(nameOriginCanonVicente).GetComponent<Canon>();
         // Encuentra el script CanonController en la escena
         FindCanonController();
         canonController.setInShot(true);
@@ -58,28 +62,39 @@ public class Bullet : MonoBehaviour
         canonController = EmtycanonController.GetComponent<CanonController>();
     }
     private void OnTriggerEnter2D(Collider2D other) {
-        if (other.gameObject.layer == canonVicenteLayer){
+        if (other.gameObject.layer == canonVicenteLayer && verif){
             localDeleteBullet();
             Debug.Log("Colision con "+other.gameObject.name);
+            canonScript.UnDrawPath();
+            canonVicente.UnDrawPath();
+            canonScript.CanonAngleCero();
+            canonVicente.CanonAngleCero();
             //Add destroy animation
             canonController.decrementHpofController();
+            verif=false;
         }
-        else if (other.gameObject.layer == canonDanielaLayer){
+        else if (other.gameObject.layer == canonDanielaLayer && verif){
             localDeleteBullet();
             Debug.Log("Colision con "+other.gameObject.name);
+            canonScript.UnDrawPath();
+            canonVicente.UnDrawPath();
+            canonScript.CanonAngleCero();
+            canonVicente.CanonAngleCero();
             //Add destroy animation
             canonController.decrementHpofController();
-            
+            verif=false;
         }
-        if (other.gameObject.layer == Floor){
+        else if (other.gameObject.layer == Floor && verif){
             localDeleteBullet();
             Debug.Log("Colision con "+other.gameObject.name);
+            canonScript.UnDrawPath();
+            canonVicente.UnDrawPath();
+            canonScript.CanonAngleCero();
+            canonVicente.CanonAngleCero();
             //Add destroy animation
+            verif=false;
         }
-        else
-        {
-            
-        }
+        
     }
     private void localDeleteBullet(){
         //Debug.Log("Manipulando objectBullet desde Bullet.cs");

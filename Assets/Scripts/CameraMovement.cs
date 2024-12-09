@@ -12,10 +12,11 @@ public class CameraMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if(Input.GetKey("1")){
             transform.position = Vector3.Lerp(transform.position,new Vector3(transform.position.x-1,0,-10), smoothing*Time.deltaTime);
+            //transform.position.Set(transform.position.x-1,0,-10);
         }
         else if(Input.GetKey("2")){
             transform.position = Vector3.Lerp(transform.position,new Vector3(0,0,-10), smoothing*Time.deltaTime);
